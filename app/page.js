@@ -1,113 +1,143 @@
 import Image from "next/image";
+import Link from 'next/link';
+
+
+// Define your hardcoded product data
+const products = [
+  { id: 1, name: 'Product 1', description: 'Description for product 1', image: '/product1.jpg' },
+  { id: 2, name: 'Product 2', description: 'Description for product 2', image: '/product2.jpg' },
+  { id: 3, name: 'Product 3', description: 'Description for product 3', image: '/product3.jpg' },
+  { id: 4, name: 'Product 4', description: 'Description for product 4', image: '/product4.jpg' },
+  { id: 5, name: 'Product 5', description: 'Description for product 5', image: '/product5.jpg' },
+  { id: 6, name: 'Product 6', description: 'Description for product 6', image: '/product6.jpg' },
+];
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200">
+      <div className="bg-gradient-to-r from-orange-500 via-red-500 to-purple-700">
+        <header className="container mx-auto px-6 py-4 flex justify-between items-center text-white relative">
+          <h1 className="font-bold text-xl">Product Store</h1>
+          <input type="checkbox" id="menu-toggle" className="hidden" />
+          <label htmlFor="menu-toggle" className="block lg:hidden text-orange-500 hover:text-white cursor-pointer">
+            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 110-2z" />
+            </svg>
+          </label>
+          <nav className="hidden lg:flex items-center">
+            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300">Home</a>
+            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300 mx-2">Products</a>
+            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300">Contact</a>
+            <button className="bg-white text-orange-500 hover:bg-orange-500 hover:text-white px-4 py-2 rounded ml-4 transition duration-300">Login</button>
+          </nav>
+          <div className="absolute top-full left-0 w-full bg-gradient-to-r from-orange-500 via-red-500 to-purple-700 lg:hidden">
+            <nav className="flex flex-col items-center py-4">
+              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Home</a>
+              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Products</a>
+              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Contact</a>
+              <button className="bg-white text-orange-500 hover:bg-orange-500 hover:text-white px-4 py-2 rounded transition duration-300">Login</button>
+            </nav>
+          </div>
+        </header>
+
+        <div className="hero bg-cover bg-center py-24" style={{ backgroundImage: "url('/hero-image.jpg')" }}>
+          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+            <div className="flex-1">
+              <h2 className="text-5xl font-bold mb-3">Explore the New Era of Innovation</h2>
+              <p className="mb-8 text-lg">Dive into our collection of latest products designed for the modern age.</p>
+              <button className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-8 rounded-lg">Shop Now</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <main className="container mx-auto py-12">
+        <h3 className="text-2xl font-semibold text-center text-gray-800 mb-10">Our Featured Products</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map(product => (
+            <div key={product.id} className="bg-white shadow-lg hover:shadow-xl rounded-lg overflow-hidden transition-shadow duration-300">
+              <Image src={product.image} width={400} height={300} alt={`Image of ${product.name}`} className="hover:scale-110 transition-transform duration-300" />
+              <div className="p-6">
+                <h4 className="text-xl font-semibold mb-2">{product.name}</h4>
+                <p className="text-gray-600">{product.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
+        <section className="text-center py-12">
+          <h3 className="text-3xl font-semibold text-gray-800 mb-4">Our Mission</h3>
+          <p className="max-w-4xl mx-auto text-gray-600">
+            At Product Store, our mission is to innovate the way you shop. We believe in quality, customer service, and sustainability, bringing you products that you can trust and love.
           </p>
-        </a>
+        </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <section className="bg-gray-100 py-12">
+          <h3 className="text-3xl font-semibold text-center text-gray-800 mb-4">Customer Testimonials</h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            <div className="max-w-sm bg-white rounded-lg shadow p-4">
+              <p className="text-gray-600 italic">"I've never been happier with a purchase! High-quality products and friendly service. Highly recommend!"</p>
+              <div className="mt-4 text-right">
+                <span className="font-bold">- Jane Doe</span>
+              </div>
+            </div>
+            <div className="max-w-sm bg-white rounded-lg shadow p-4">
+              <p className="text-gray-600 italic">"Fast delivery and stellar customer support. Product Store is my go-to for tech gadgets."</p>
+              <div className="mt-4 text-right">
+                <span className="font-bold">- John Smith</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        <section className="py-12">
+          <h3 className="text-3xl font-semibold text-center text-gray-800 mb-4">Our Services</h3>
+          <div className="flex flex-wrap justify-center text-center gap-10">
+            <div className="w-1/4">
+              <Image src="/fast-delivery.svg" alt="Fast Delivery" width={64} height={64} />
+              <h4 className="font-bold mt-2">Fast Delivery</h4>
+              <p className="text-gray-600">Speedy and reliable delivery services.</p>
+            </div>
+            <div className="w-1/4">
+              <Image src="/quality-products.svg" alt="Quality Products" width={64} height={64} />
+              <h4 className="font-bold mt-2">Quality Products</h4>
+              <p className="text-gray-600">Only the best products pass our tests.</p>
+            </div>
+            <div className="w-1/4">
+              <Image src="/customer-support.svg" alt="Customer Support" width={64} height={64} />
+              <h4 className="font-bold mt-2">24/7 Support</h4>
+              <p className="text-gray-600">Always here to help and provide information.</p>
+            </div>
+          </div>
+        </section>
+      </main>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <footer className="bg-black text-white py-8">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap justify-between items-center">
+            <div className="text-lg">
+              <h2 className="font-bold text-xl mb-2">Product Store</h2>
+              <p>Discover our wide range of quality products.</p>
+            </div>
+            <nav className="flex flex-wrap justify-between">
+              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Home</a>
+              <a href="/about" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">About Us</a>
+              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Products</a>
+              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Contact</a>
+            </nav>
+            <div>
+              <p>Follow us:</p>
+              <div className="flex space-x-4 mt-2">
+                <a href="#" className="hover:text-gray-400 transition duration-300">Facebook</a>
+                <a href="#" className="hover:text-gray-400 transition duration-300">Twitter</a>
+                <a href="#" className="hover:text-gray-400 transition duration-300">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
   );
 }
