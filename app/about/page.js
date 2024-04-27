@@ -1,26 +1,12 @@
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200">
-      <div className="bg-gradient-to-r from-orange-500 via-red-500 to-purple-700">
-        <header className="container mx-auto px-6 py-4 flex justify-between items-center text-white relative">
-          <h1 className="font-bold text-xl">Product Store</h1>
-          <nav className="hidden lg:flex items-center">
-            <a href="/" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Home</a>
-            <a href="/about" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">About Us</a>
-            <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Products</a>
-            <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Contact</a>
-          </nav>
-        </header>
 
-        <div className="hero bg-cover bg-center py-24 relative overflow-hidden" style={{ backgroundImage: "url('/about-hero.jpg')" }}>
-          <div className="container mx-auto text-center">
-            <h2 className="text-5xl font-bold text-white animate-pulse">About Us</h2>
-            <p className="text-lg text-white mt-4 opacity-75 transition-opacity duration-500 hover:opacity-100">Learn more about our journey and mission.</p>
-          </div>
-        </div>
-      </div>
+      <Navbar />
 
       <main className="container mx-auto py-12 px-6 text-left">
         <section className="mb-12">
@@ -52,30 +38,7 @@ export default function About() {
         </section>
       </main>
 
-      <footer className="bg-black text-white py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-between items-center">
-            <div className="text-lg">
-              <h2 className="font-bold text-xl mb-2">Product Store</h2>
-              <p>Discover our wide range of quality products.</p>
-            </div>
-            <nav className="flex flex-wrap justify-between">
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Home</a>
-              <a href="/about" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">About Us</a>
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Products</a>
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Contact</a>
-            </nav>
-            <div>
-              <p>Follow us:</p>
-              <div className="flex space-x-4 mt-2">
-                <a href="#" className="hover:text-gray-400 transition duration-300">Facebook</a>
-                <a href="#" className="hover:text-gray-400 transition duration-300">Twitter</a>
-                <a href="#" className="hover:text-gray-400 transition duration-300">Instagram</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

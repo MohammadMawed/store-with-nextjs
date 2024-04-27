@@ -1,45 +1,28 @@
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
 import Link from 'next/link';
 
 
 // Define your hardcoded product data
 const products = [
-  { id: 1, name: 'Product 1', description: 'Description for product 1', image: '/product1.jpg' },
-  { id: 2, name: 'Product 2', description: 'Description for product 2', image: '/product2.jpg' },
-  { id: 3, name: 'Product 3', description: 'Description for product 3', image: '/product3.jpg' },
-  { id: 4, name: 'Product 4', description: 'Description for product 4', image: '/product4.jpg' },
-  { id: 5, name: 'Product 5', description: 'Description for product 5', image: '/product5.jpg' },
-  { id: 6, name: 'Product 6', description: 'Description for product 6', image: '/product6.jpg' },
+  { id: 1, name: 'Product 1', description: 'Description for product 1', price: '$29.99', image: '/product1.jpg' },
+  { id: 2, name: 'Product 2', description: 'Description for product 2', price: '$39.99', image: '/product1.jpg' },
+  { id: 3, name: 'Product 3', description: 'Description for product 3', price: '$49.99', image: '/product1.jpg' },
+  { id: 4, name: 'Product 4', description: 'Description for product 4', price: '$59.99', image: '/product1.jpg' },
+  { id: 5, name: 'Product 5', description: 'Description for product 5', price: '$69.99', image: '/product1.jpg' },
+  { id: 6, name: 'Product 6', description: 'Description for product 6', price: '$79.99', image: '/product1.jpg' },
 ];
+
 
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200">
       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-purple-700">
-        <header className="container mx-auto px-6 py-4 flex justify-between items-center text-white relative">
-          <h1 className="font-bold text-xl">Product Store</h1>
-          <input type="checkbox" id="menu-toggle" className="hidden" />
-          <label htmlFor="menu-toggle" className="block lg:hidden text-orange-500 hover:text-white cursor-pointer">
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path fillRule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 110-2z" />
-            </svg>
-          </label>
-          <nav className="hidden lg:flex items-center">
-            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300">Home</a>
-            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300 mx-2">Products</a>
-            <a href="#" className="hover:bg-white hover:text-orange-500 px-3 py-2 rounded transition duration-300">Contact</a>
-            <button className="bg-white text-orange-500 hover:bg-orange-500 hover:text-white px-4 py-2 rounded ml-4 transition duration-300">Login</button>
-          </nav>
-          <div className="absolute top-full left-0 w-full bg-gradient-to-r from-orange-500 via-red-500 to-purple-700 lg:hidden">
-            <nav className="flex flex-col items-center py-4">
-              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Home</a>
-              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Products</a>
-              <a href="#" className="text-white px-3 py-2 rounded transition duration-300">Contact</a>
-              <button className="bg-white text-orange-500 hover:bg-orange-500 hover:text-white px-4 py-2 rounded transition duration-300">Login</button>
-            </nav>
-          </div>
-        </header>
+
+        <Navbar />
 
         <div className="hero bg-cover bg-center py-24" style={{ backgroundImage: "url('/hero-image.jpg')" }}>
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
@@ -56,13 +39,7 @@ export default function Home() {
         <h3 className="text-2xl font-semibold text-center text-gray-800 mb-10">Our Featured Products</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map(product => (
-            <div key={product.id} className="bg-white shadow-lg hover:shadow-xl rounded-lg overflow-hidden transition-shadow duration-300">
-              <Image src={product.image} width={400} height={300} alt={`Image of ${product.name}`} className="hover:scale-110 transition-transform duration-300" />
-              <div className="p-6">
-                <h4 className="text-xl font-semibold mb-2">{product.name}</h4>
-                <p className="text-gray-600">{product.description}</p>
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
@@ -113,30 +90,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-black text-white py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap justify-between items-center">
-            <div className="text-lg">
-              <h2 className="font-bold text-xl mb-2">Product Store</h2>
-              <p>Discover our wide range of quality products.</p>
-            </div>
-            <nav className="flex flex-wrap justify-between">
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Home</a>
-              <a href="/about" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">About Us</a>
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Products</a>
-              <a href="#" className="px-3 py-2 rounded hover:bg-purple-700 transition duration-300">Contact</a>
-            </nav>
-            <div>
-              <p>Follow us:</p>
-              <div className="flex space-x-4 mt-2">
-                <a href="#" className="hover:text-gray-400 transition duration-300">Facebook</a>
-                <a href="#" className="hover:text-gray-400 transition duration-300">Twitter</a>
-                <a href="#" className="hover:text-gray-400 transition duration-300">Instagram</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
+
 
     </div>
   );
