@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Login() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-orange-500 via-red-500 to-purple-700">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
             <Link href="/">
                 <div className="absolute left-4 top-4 p-2 bg-white rounded-full cursor-pointer shadow hover:shadow-lg transition-shadow">
                     {/* SVG for the back arrow in black */}

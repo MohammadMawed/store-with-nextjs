@@ -16,13 +16,12 @@ const products = [
 ];
 
 
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200">
       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-purple-700">
-
         <Navbar />
+
 
         <div className="hero bg-cover bg-center py-24" style={{ backgroundImage: "url('/hero-image.jpg')" }}>
           <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">

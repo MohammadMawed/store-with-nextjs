@@ -1,23 +1,36 @@
-// pages/Products.js
+// pages/products.js
 import React from 'react';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 
-const products = [
-    { id: 1, name: 'Product 1', description: 'Description for product 1', price: '$29.99', image: '/product1.jpg' },
-    { id: 2, name: 'Product 2', description: 'Description for product 2', price: '$39.99', image: '/product1.jpg' },
-    { id: 3, name: 'Product 3', description: 'Description for product 3', price: '$49.99', image: '/product1.jpg' },
-    { id: 4, name: 'Product 4', description: 'Description for product 4', price: '$59.99', image: '/product1.jpg' },
-    { id: 5, name: 'Product 5', description: 'Description for product 5', price: '$69.99', image: '/product1.jpg' },
-    { id: 6, name: 'Product 6', description: 'Description for product 6', price: '$79.99', image: '/product1.jpg' },
-  ];
-  
+// Asynchronously fetch the data immediately and store it in a variable.
+let globalProducts = [];
 
-export default function Products() {
+(async () => {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        globalProducts = data.map(post => ({
+            id: post.id,
+            name: post.title,
+            description: post.body,
+            price: `$${((post.id % 20) * 5 + 19.99).toFixed(2)}`, // Random pricing logic
+            image: '/product1.jpg' // Placeholder image for all products
+        }));
+    } catch (error) {
+        console.error('Error fetching data:', error.message);
+    }
+})();
+
+const ProductsPage = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-200">
             <Navbar />
+            
             <main className="container mx-auto py-12 px-6">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">All Products</h2>
                 <div className="text-center mb-8">
@@ -38,7 +51,7 @@ export default function Products() {
                     />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {products.map(product => (
+                    {globalProducts.map(product => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
@@ -46,4 +59,6 @@ export default function Products() {
             <Footer />
         </div>
     );
-}
+};
+
+export default ProductsPage;
